@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MenuTextStyle" parent="TextAppearance.AppCompat.Menu">
+        <item name="android:textColor">#FF5722</item>
+    </style>
+
+    <style name="MenuTextTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="actionMenuTextAppearance">@style/MenuTextStyle</item>
+    </style>
+
+    <style name="PopupMenuStyle" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">#FF5722</item> <!-- Оранжевый фон -->
+    </style>
+
+    <style name="MenuIconTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="popupMenuStyle">@style/PopupMenuStyle</item>
+    </style>
+    
+</resources>
