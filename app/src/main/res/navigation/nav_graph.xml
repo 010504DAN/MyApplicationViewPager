@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/notesFragment"
-        android:name="com.example.myapplicationviewpager.views.NotesFragment"
+        android:name="com.example.myapplicationviewpager.views.note.NotesFragment"
         android:label="fragment_notes"
         tools:layout="@layout/fragment_notes" >
         <action
@@ -16,7 +16,21 @@
     </fragment>
     <fragment
         android:id="@+id/newNoteFragment"
-        android:name="com.example.myapplicationviewpager.views.NewNoteFragment"
+        android:name="com.example.myapplicationviewpager.views.note.NewNoteFragment"
         android:label="fragment_new_note"
         tools:layout="@layout/fragment_new_note" />
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="com.example.myapplicationviewpager.views.onBoard.OnBoardFragment"
+        android:label="fragment_on_board"
+        tools:layout="@layout/fragment_on_board" />
+    <fragment
+        android:id="@+id/pagerItemFragment"
+        android:name="com.example.myapplicationviewpager.views.onBoard.PagerItemFragment"
+        android:label="fragment_pager_item"
+        tools:layout="@layout/fragment_pager_item" >
+        <action
+            android:id="@+id/action_pagerItemFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
 </navigation>

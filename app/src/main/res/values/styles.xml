@@ -16,5 +16,15 @@
     <style name="MenuIconTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="popupMenuStyle">@style/PopupMenuStyle</item>
     </style>
-    
+
+    <style name="CustomTabIndicator" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabIndicatorHeight">6dp</item>
+        <item name="tabIndicatorColor">@color/white</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+        <item name="tabTextColor">@color/orange</item>
+        <item name="tabIndicatorFullWidth">false</item>
+    </style>
+
+
+
 </resources>

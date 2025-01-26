@@ -1,15 +1,13 @@
-package com.example.myapplicationviewpager.views
+package com.example.myapplicationviewpager.views.note
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import com.example.myapplicationviewpager.PreferenceHelper
-import com.example.myapplicationviewpager.R
 import com.example.myapplicationviewpager.databinding.FragmentNewNoteBinding
-import com.example.myapplicationviewpager.databinding.FragmentNotesBinding
 import com.example.myapplicationviewpager.extensions.setBackStackData
 
 class NewNoteFragment : Fragment() {
@@ -29,6 +27,7 @@ class NewNoteFragment : Fragment() {
         setListener()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun setListener() {
         binding.apply {
             btnSave.setOnClickListener{

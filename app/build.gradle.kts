@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -42,12 +43,23 @@ android {
 
 val nav_version = "2.8.4"
 val lottieVersion = "6.6.2"
+val room_version = "2.6.1"
 dependencies {
 
+    implementation ("me.relex:circleindicator:2.1.6")
+
     implementation ("com.airbnb.android:lottie:$lottieVersion")
+
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+
     implementation ("androidx.navigation:navigation-fragment:$nav_version")
     implementation ("androidx.navigation:navigation-ui:$nav_version")
+
+    implementation("androidx.room:room-runtime:$room_version")
+    // If this project only uses Java source, use the Java annotationProcessor
+    // No additional plugins are necessary
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
