@@ -4,7 +4,9 @@ plugins {
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.devtools.ksp")
+    id ("kotlin-kapt")
 }
+
 
 android {
     namespace = "com.example.myapplicationviewpager"
@@ -55,10 +57,9 @@ dependencies {
     implementation ("androidx.navigation:navigation-fragment:$nav_version")
     implementation ("androidx.navigation:navigation-ui:$nav_version")
 
-    implementation("androidx.room:room-runtime:$room_version")
-    // If this project only uses Java source, use the Java annotationProcessor
-    // No additional plugins are necessary
-    annotationProcessor("androidx.room:room-compiler:$room_version")
+//    implementation ("androidx.room:room-runtime:2.5.0-alpha02")
+    implementation ("androidx.room:room-ktx:2.5.0-alpha02")
+    kapt ("androidx.room:room-compiler:2.5.0-alpha02")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -24,7 +24,10 @@
         <item name="tabTextColor">@color/orange</item>
         <item name="tabIndicatorFullWidth">false</item>
     </style>
-
-
+    
+    <style name="Buttom.Style" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="elevation">0dp</item>
+        <item name="iconSize">20dp</item>
+    </style>
 
 </resources>

@@ -15,5 +15,4 @@ fun <T: Any> Fragment.getBackStackData(kay :String, result: (T) -> (Unit)){
         ?.observe(viewLifecycleOwner){
             result(it)
         }
-
 }

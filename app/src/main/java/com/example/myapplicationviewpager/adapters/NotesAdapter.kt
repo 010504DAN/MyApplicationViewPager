@@ -5,22 +5,27 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplicationviewpager.R
+import com.example.myapplicationviewpager.data.model.NoteEntity
 import com.example.myapplicationviewpager.databinding.ItemNoteBinding
-import com.example.myapplicationviewpager.models.Notes
 
-class NotesAdapter(private val notes: ArrayList<Notes>) : ListAdapter<Notes,NotesAdapter.NotesViewHolder>(DiffCallback()) {
+class NotesAdapter : ListAdapter<NoteEntity,NotesAdapter.NotesViewHolder>(DiffCallback()) {
 
-//    fun setData(notes: List<Notes>){
-//        this.notes.clear()
-//        this.notes.addAll(notes)
-//        notifyDataSetChanged()
-//
-//    }
+    private val backgrounds = listOf(
+        R.drawable.bg_blue,
+        R.drawable.bg_green,
+        R.drawable.bg_light_grey,
+        R.drawable.bg_light_yellow,
+        R.drawable.bg_pink,
+        R.drawable.bg_violet
+    )
 
     inner class NotesViewHolder(private val binding: ItemNoteBinding) :
         RecyclerView.ViewHolder (binding.root) {
-        fun bind(notes: Notes){
+        fun bind(notes: NoteEntity){
             binding.tvTitle.text = notes.title
+            binding.tvDescr.text = notes.description
+            binding.tvDate.text = notes.date
         }
     }
 
@@ -29,20 +34,19 @@ class NotesAdapter(private val notes: ArrayList<Notes>) : ListAdapter<Notes,Note
         return NotesViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        return notes.size
-    }
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
-        holder.bind(notes[position])
+        val background: Int = backgrounds[position % backgrounds.size]
+        holder.itemView.setBackgroundColor(background)
+        holder.bind(getItem((position)))
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<Notes>() {
-        override fun areItemsTheSame(oldItem: Notes, newItem: Notes): Boolean {
+    class DiffCallback : DiffUtil.ItemCallback<NoteEntity>() {
+        override fun areItemsTheSame(oldItem: NoteEntity, newItem: NoteEntity): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Notes, newItem: Notes): Boolean {
+        override fun areContentsTheSame(oldItem: NoteEntity, newItem: NoteEntity): Boolean {
             return oldItem.title == newItem.title
         }
 

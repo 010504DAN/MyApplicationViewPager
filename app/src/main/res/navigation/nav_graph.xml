@@ -16,9 +16,9 @@
     </fragment>
     <fragment
         android:id="@+id/newNoteFragment"
-        android:name="com.example.myapplicationviewpager.views.note.NewNoteFragment"
+        android:name="com.example.myapplicationviewpager.views.note.WriteNoteFragment"
         android:label="fragment_new_note"
-        tools:layout="@layout/fragment_new_note" />
+        tools:layout="@layout/fragment_write_note" />
     <fragment
         android:id="@+id/onBoardFragment"
         android:name="com.example.myapplicationviewpager.views.onBoard.OnBoardFragment"
