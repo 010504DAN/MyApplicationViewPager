@@ -14,7 +14,7 @@
 
     <TextView
         android:id="@+id/tv_skip"
-        android:text="Пропустить"
+        android:text="@string/Skip"
         android:textSize="20sp"
         android:textColor="@color/orange"
         android:layout_marginTop="40dp"

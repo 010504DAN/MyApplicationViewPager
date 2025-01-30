@@ -8,17 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplicationviewpager.R
 import com.example.myapplicationviewpager.data.model.NoteEntity
 import com.example.myapplicationviewpager.databinding.ItemNoteBinding
+import com.example.myapplicationviewpager.extensions.OnItemClick
 
-class NotesAdapter : ListAdapter<NoteEntity,NotesAdapter.NotesViewHolder>(DiffCallback()) {
-
-    private val backgrounds = listOf(
-        R.drawable.bg_blue,
-        R.drawable.bg_green,
-        R.drawable.bg_light_grey,
-        R.drawable.bg_light_yellow,
-        R.drawable.bg_pink,
-        R.drawable.bg_violet
-    )
+class NotesAdapter(
+    /*private val onItemClick: (NoteEntity) -> Unit,
+    private val onItemLongClick: (NoteEntity) -> Unit,*/
+    private val customOnClick: OnItemClick
+) : ListAdapter<NoteEntity,NotesAdapter.NotesViewHolder>(DiffCallback()) {
 
     inner class NotesViewHolder(private val binding: ItemNoteBinding) :
         RecyclerView.ViewHolder (binding.root) {
@@ -26,6 +22,7 @@ class NotesAdapter : ListAdapter<NoteEntity,NotesAdapter.NotesViewHolder>(DiffCa
             binding.tvTitle.text = notes.title
             binding.tvDescr.text = notes.description
             binding.tvDate.text = notes.date
+            binding.root.setBackgroundColor(android.graphics.Color.parseColor(notes.color))
         }
     }
 
@@ -36,9 +33,16 @@ class NotesAdapter : ListAdapter<NoteEntity,NotesAdapter.NotesViewHolder>(DiffCa
 
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
-        val background: Int = backgrounds[position % backgrounds.size]
-        holder.itemView.setBackgroundColor(background)
         holder.bind(getItem((position)))
+
+        holder.itemView.setOnClickListener{
+            customOnClick.onClick(getItem(position))
+        }
+
+        holder.itemView.setOnLongClickListener{
+            customOnClick.onLongClick(getItem(position))
+            true
+        }
     }
 
     class DiffCallback : DiffUtil.ItemCallback<NoteEntity>() {

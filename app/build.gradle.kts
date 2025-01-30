@@ -5,6 +5,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.devtools.ksp")
     id ("kotlin-kapt")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 
@@ -57,9 +58,16 @@ dependencies {
     implementation ("androidx.navigation:navigation-fragment:$nav_version")
     implementation ("androidx.navigation:navigation-ui:$nav_version")
 
-//    implementation ("androidx.room:room-runtime:2.5.0-alpha02")
     implementation ("androidx.room:room-ktx:2.5.0-alpha02")
+    implementation(libs.androidx.gridlayout)
     kapt ("androidx.room:room-compiler:2.5.0-alpha02")
+
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("com.google.android.gms:play-services-auth:21.3.0")
+    implementation(libs.firebase.auth)
+    implementation("com.google.firebase:firebase-firestore")
+
+    implementation("com.google.android.material:material:1.11.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

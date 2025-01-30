@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/notesFragment">
+    app:startDestination="@id/singInFragment">
 
     <fragment
         android:id="@+id/notesFragment"
@@ -18,7 +18,12 @@
         android:id="@+id/newNoteFragment"
         android:name="com.example.myapplicationviewpager.views.note.WriteNoteFragment"
         android:label="fragment_new_note"
-        tools:layout="@layout/fragment_write_note" />
+        tools:layout="@layout/fragment_write_note">
+        <argument
+            android:name="note"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
     <fragment
         android:id="@+id/onBoardFragment"
         android:name="com.example.myapplicationviewpager.views.onBoard.OnBoardFragment"
@@ -31,6 +36,18 @@
         tools:layout="@layout/fragment_pager_item" >
         <action
             android:id="@+id/action_pagerItemFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+        <action
+            android:id="@+id/action_pagerItemFragment_to_singInFragment"
+            app:destination="@id/singInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singInFragment"
+        android:name="com.example.myapplicationviewpager.views.SingInFragment"
+        android:label="fragment_sing_in"
+        tools:layout="@layout/fragment_sing_in" >
+        <action
+            android:id="@+id/action_singInFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
     </fragment>
 </navigation>

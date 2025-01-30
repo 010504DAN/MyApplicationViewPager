@@ -6,6 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.example.myapplicationviewpager.adapters.OnBoardAdapter
 import com.example.myapplicationviewpager.data.model.NoteEntity
 
@@ -20,6 +21,13 @@ interface NoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(note: NoteEntity)
 
-    /*@Delete
-    fun delete(note: NoteEntity)*/
+    @Delete
+    fun delete(note: NoteEntity)
+
+    @Query("SELECT * FROM note WHERE id = :id")
+    fun getById(id: Int): NoteEntity
+
+    @Update
+    fun update(note: NoteEntity)
+
 }

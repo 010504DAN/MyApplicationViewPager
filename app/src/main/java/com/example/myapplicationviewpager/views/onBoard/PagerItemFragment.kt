@@ -18,7 +18,6 @@ class PagerItemFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentPagerItemBinding.inflate(layoutInflater)
         return binding.root
     }

@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/dark_grey"
+    android:id="@+id/fragment_note"
     tools:context=".views.note.WriteNoteFragment">
 
     <EditText
         android:id="@+id/et_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Write Hote"
+        android:hint="@string/enter_title"
         android:textSize="32sp"
         android:textColorHint="@color/light_grey"
         android:textColor="@color/white"
@@ -24,7 +25,7 @@
         android:id="@+id/et_descr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Write Hote"
+        android:hint="@string/enter_description"
         android:textSize="24sp"
         android:textColorHint="@color/light_grey"
         android:textColor="@color/white"
@@ -37,20 +38,20 @@
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="todase"
-        android:textSize="24sp"
+        tools:text="today"
+        android:textSize="20sp"
         android:textColor="@color/orange"
         android:backgroundTint="@color/dark_grey"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="32dp"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="40dp" />
 
     <TextView
         android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/save"
         android:textSize="24sp"
         android:textColor="@color/orange"
         android:backgroundTint="@color/dark_grey"
@@ -68,6 +69,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_save"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginEnd="10dp"/>
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_shape6"
+        android:backgroundTint="@color/dark_grey"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

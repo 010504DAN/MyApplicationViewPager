@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/color_light_yellow"
+        android:title="Жёлтый"
+        android:icon="@drawable/bg_light_yellow" />
+
+    <item
+        android:id="@+id/color_green"
+        android:title="Зелёный"
+        android:icon="@drawable/bg_green" />
+
+    <item
+        android:id="@+id/color_blue"
+        android:title="Синий"
+        android:icon="@drawable/bg_blue" />
+
+    <item
+        android:id="@+id/color_light_red"
+        android:title="Красный"
+        android:icon="@drawable/bg_light_red" />
+
+    <item
+        android:id="@+id/color_pink"
+        android:title="Розовый"
+        android:icon="@drawable/bg_pink" />
+
+    <item
+        android:id="@+id/color_violet"
+        android:title="Фиолетовый"
+        android:icon="@drawable/bg_violet" />
+
+</menu>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Менин тиркемем View Pager</string>
+    <string name="hello_blank_fragment">Салам, бош фрагмент</string>
+    <string name="all_notes">Бардык жазуулар</string>
+    <string name="search">Жазууларды издөө</string>
+    <string name="save">Сактоо</string>
+    <string name="convenience">Ыңгайлуулук</string>
+    <string name="convenience_desc">Жазууларды бир нече чыкылдатуу менен түзүңүз! Ойлоруңузду, идеяларыңызды жана маанилүү иштерди дароо жазып алыңыз.</string>
+    <string name="organization">Уюштуруу</string>
+    <string name="organization_desc">Жазууларды папкаларга жана тегдерге бөлүңүз. Керектүү маалыматты каалаган убакта оңой табыңыз.</string>
+    <string name="synchronization">Синхрондоштуруу</string>
+    <string name="synchronization_desc">Бардык түзмөктөрдө синхрондоштуруу. Жазууларга каалаган убакта жана жерде кирүү мүмкүнчүлүгү.</string>
+    <string name="default_web_client_id">613412218744-5bhvl1lc0dgt0l5k5r78oqj2go5jmu61.apps.googleusercontent.com</string>
+    <string name="Authorization">Авторизация</string>
+    <string name="change_color">Түсү өзгөртүү</string>
+    <string name="enter_title">Аталышын киргизиңиз</string>
+    <string name="enter_description">Сүрөттөмө киргизиңиз</string>
+    <string name="Skip">Өткөрүп жибер</string>
+    <string name="guest">Конок</string>
+</resources>

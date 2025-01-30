@@ -15,7 +15,6 @@ class OnBoardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentOnBoardBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -29,20 +28,20 @@ class OnBoardFragment : Fragment() {
         val onBoardPosition = requireArguments().getInt(ARG_ONBOARD_POSITION)
         when (onBoardPosition){
             0 -> {
-                binding.tvTitle2.text = "Удобство"
-                binding.tvDesc.text = "Создавайте заметки в два клика! Записывайте мысли, идеи и важные задачи мгновенно."
+                binding.tvTitle2.text = getString(R.string.convenience)
+                binding.tvDesc.text = getString(R.string.convenience_desc)
                 binding.lottieAnim.setAnimation(R.raw.animation3)
                 binding.lottieAnim.playAnimation()
             }
             1 -> {
-                binding.tvTitle2.text = "Организация"
-                binding.tvDesc.text = "Организуйте заметки по папкам и тегам. Легко находите нужную информацию в любое время."
+                binding.tvTitle2.text = getString(R.string.organization)
+                binding.tvDesc.text = getString(R.string.organization_desc)
                 binding.lottieAnim.setAnimation(R.raw.animation2)
                 binding.lottieAnim.playAnimation()
             }
             2 -> {
-                binding.tvTitle2.text = "Синхронизация"
-                binding.tvDesc.text = "Синхронизация на всех устройствах. Доступ к записям в любое время и в любом месте."
+                binding.tvTitle2.text = getString(R.string.synchronization)
+                binding.tvDesc.text = getString(R.string.synchronization_desc)
                 binding.lottieAnim.setAnimation(R.raw.animation1)
                 binding.lottieAnim.playAnimation()
             }

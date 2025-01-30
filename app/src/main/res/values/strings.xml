@@ -2,4 +2,20 @@
     <string name="app_name">My Application View Pager</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_notes">Все заметки</string>
+    <string name="search">Поиск заметок</string>
+    <string name="save">Готово</string>
+    <string name="convenience">Удобство</string>
+    <string name="convenience_desc">Создавайте заметки в кликах! Мгновенно записывайте мысли, идеи и важные задачи.</string>
+    <string name="organization">Организация</string>
+    <string name="organization_desc">Организуйте заметки по папкам и тегам. Легко находите нужную информацию в любое время.</string>
+    <string name="synchronization">Синхронизация</string>
+    <string name="synchronization_desc">Синхронизация на всех устройствах. Доступ к записям в любое время и в любом месте.</string>
+    <string name="default_web_client_id">613412218744-5bhvl1lc0dgt0l5k5r78oqj2go5jmu61.apps.googleusercontent.com</string>
+    <string name="Authorization">Авторизация</string>
+    <string name="change_color">Поменять цвет</string>
+    <string name="enter_title">Введите заголовок</string>
+    <string name="enter_description">Введите описание</string>
+    <string name="Skip">Пропустить</string>
+    <string name="guest">Гость</string>
 </resources>

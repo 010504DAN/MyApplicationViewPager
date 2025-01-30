@@ -10,11 +10,16 @@ class PreferenceHelper {
         sharedPreferences = context.getSharedPreferences("shared", Context.MODE_PRIVATE)
     }
 
-    var text: String?
+    /*var text: String?
         get() = sharedPreferences.getString("text", "")
-        set(value) = sharedPreferences.edit().putString("text",value).apply()
+        set(value) = sharedPreferences.edit().putString("text",value).apply()*/
 
     var isOnBoardShown: Boolean
         get() = sharedPreferences.getBoolean("onBoard", false)
         set(value) = sharedPreferences.edit().putBoolean("onBoard", value).apply()
+
+    var isAnonymous: Boolean
+        get() = sharedPreferences.getBoolean("anonymous", false)
+        set(value) = sharedPreferences.edit().putBoolean("anonymous", value).apply()
+
 }
