@@ -23,6 +23,9 @@
             android:name="note"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_newNoteFragment_to_colorFragment"
+            app:destination="@id/colorFragment" />
     </fragment>
     <fragment
         android:id="@+id/onBoardFragment"
@@ -50,4 +53,8 @@
             android:id="@+id/action_singInFragment_to_notesFragment"
             app:destination="@id/notesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/colorFragment"
+        android:name="com.example.myapplicationviewpager.views.note.ColorFragment"
+        android:label="ColorFragment" />
 </navigation>

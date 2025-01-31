@@ -4,8 +4,8 @@ plugins {
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
     id("com.google.devtools.ksp")
-    id ("kotlin-kapt")
     alias(libs.plugins.google.gms.google.services)
+    id("com.google.firebase.crashlytics")
 }
 
 
@@ -48,26 +48,30 @@ val nav_version = "2.8.4"
 val lottieVersion = "6.6.2"
 val room_version = "2.6.1"
 dependencies {
-
-    implementation ("me.relex:circleindicator:2.1.6")
-
-    implementation ("com.airbnb.android:lottie:$lottieVersion")
-
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
-
-    implementation ("androidx.navigation:navigation-fragment:$nav_version")
-    implementation ("androidx.navigation:navigation-ui:$nav_version")
-
-    implementation ("androidx.room:room-ktx:2.5.0-alpha02")
+    //splashscreen
+    implementation(libs.androidx.core.splashscreen)
+    //circleindicator
+    implementation (libs.circleindicator)
+    //lottie
+    implementation (libs.lottie)
+    //glide
+    implementation (libs.glide)
+    //navigation
+    implementation (libs.androidx.navigation.fragment.ktx)
+    implementation (libs.androidx.navigation.ui)
+    //room
+    implementation (libs.androidx.room.ktx)
+    ksp (libs.androidx.room.compiler)
     implementation(libs.androidx.gridlayout)
-    kapt ("androidx.room:room-compiler:2.5.0-alpha02")
-
-    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
-    implementation("com.google.android.gms:play-services-auth:21.3.0")
+    //firebase
+    implementation(libs.firebase.messaging)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.play.services.auth)
     implementation(libs.firebase.auth)
-    implementation("com.google.firebase:firebase-firestore")
-
-    implementation("com.google.android.material:material:1.11.0")
+    implementation(libs.firebase.firestore)
+    implementation(libs.material.v1110)
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.analytics)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

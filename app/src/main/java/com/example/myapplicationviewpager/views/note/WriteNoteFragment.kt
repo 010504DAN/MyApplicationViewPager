@@ -48,11 +48,6 @@ class WriteNoteFragment : Fragment() {
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        handler.removeCallbacks(updateTimeTask)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         startRealTimeClock()
@@ -67,78 +62,82 @@ class WriteNoteFragment : Fragment() {
         handler.removeCallbacks(updateTimeTask)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        stopRealTimeClock()
+    }
+
     @SuppressLint("SuspiciousIndentation")
     private fun setListener() {
         val pref = PreferenceHelper()
         pref.unit(requireContext())
-        if (pref.isAnonymous){
-        binding.apply {
-            val args: WriteNoteFragmentArgs = WriteNoteFragmentArgs.fromBundle(requireArguments())
-            App.appDatabase?.noteDao()?.getById(args.note)
-                ?.let {
-                    etTitle.setText(it.title)
-                    etDescr.setText(it.description)
-                    tvDate.text = it.date
-                    selectedColor = it.color
-                    isEdit = true
-                }
 
+        val args: WriteNoteFragmentArgs = WriteNoteFragmentArgs.fromBundle(requireArguments())
+        if (args.note != -1) {
+            App.appDatabase?.noteDao()?.getById(args.note)?.let { note ->
+                binding.etTitle.setText(note.title)
+                binding.etDescr.setText(note.description)
+                selectedColor = note.color
+                isEdit = true
+            }
         }
 
         binding.apply {
-            btnBack.setOnClickListener{
+            btnBack.setOnClickListener {
+                throw RuntimeException("Test Crash")
                 findNavController().navigateUp()
-            }
-            btnAdd.setOnClickListener {
-                showColorMenu(it)
-            }
-            btnSave.setOnClickListener {
-                if (binding.etTitle.text.toString() != "") {
-                    val title: String = binding.etTitle.text.toString()
-                    val descr: String = binding.etDescr.text.toString()
-                    val currentDate = binding.tvDate.text.toString()
-                    val note = NoteEntity(0, title, descr, currentDate, selectedColor)
 
+            }
+
+            btnAdd.setOnClickListener {
+                findNavController().navigate(R.id.action_newNoteFragment_to_colorFragment)
+            }
+
+            btnSave.setOnClickListener {
+                val title = etTitle.text.toString()
+                val descr = etDescr.text.toString()
+                val currentDate = tvDate.text.toString()
+
+                if (title.isEmpty()) {
+                    Toast.makeText(requireContext(), "Title cannot be empty", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                val note = NoteEntity(0, title, descr, currentDate, selectedColor)
+
+                if (pref.isAnonymous) {
                     if (isEdit) {
-                        val args: WriteNoteFragmentArgs =
-                            WriteNoteFragmentArgs.fromBundle(requireArguments())
                         note.id = args.note
                         App.appDatabase?.noteDao()?.update(note)
-                        findNavController().navigateUp()
                     } else {
                         App.appDatabase?.noteDao()?.insert(note)
-                        findNavController().navigateUp()
                     }
-                }
-            }
-            }
-        } else {
-            binding.btnSave.setOnClickListener{
-            val db = Firebase.firestore
-            val currentDate = binding.tvDate.text.toString()
-            val note = hashMapOf(
-                "title" to binding.etTitle.text.toString(),
-                "description" to binding.etDescr.text.toString(),
-                "date" to currentDate,
-                "color" to selectedColor
-            )
+                    findNavController().navigateUp()
+                } else {
+                    val db = Firebase.firestore
+                    val firestoreNote = hashMapOf(
+                        "title" to title,
+                        "description" to descr,
+                        "date" to currentDate,
+                        "color" to selectedColor
+                    )
 
-            db.collection("notes")
-                .add(note)
-                .addOnSuccessListener { documentReference ->
-                    Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                    findNavController().navigateUp()
-                }
-                .addOnFailureListener { e ->
-                    Log.w(TAG, "Error adding document", e)
-                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
-                    findNavController().navigateUp()
+                    db.collection("notes")
+                        .add(firestoreNote)
+                        .addOnSuccessListener {
+                            Log.d(TAG, "Note saved to Firestore")
+                            findNavController().navigateUp()
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e(TAG, "Error saving note to Firestore", e)
+                            Toast.makeText(requireContext(), "Error saving note", Toast.LENGTH_SHORT).show()
+                        }
                 }
             }
         }
     }
 
-    private fun showColorMenu(view: View) {
+    /*private fun showColorMenu(view: View) {
         val popupMenu = PopupMenu(requireContext(), view)
         popupMenu.inflate(R.menu.menu_color_selection)
 
@@ -154,7 +153,7 @@ class WriteNoteFragment : Fragment() {
             true
         }
         popupMenu.show()
-    }
+    }*/
 
     companion object{
         private const val TAG = "zizi"

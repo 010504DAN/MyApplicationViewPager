@@ -15,9 +15,6 @@ interface NoteDao {
     @Query("SELECT * FROM note")
     fun getAll(): LiveData<List<NoteEntity>>
 
-    @Insert
-    fun insertAll(vararg notes: NoteEntity)
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(note: NoteEntity)
 
